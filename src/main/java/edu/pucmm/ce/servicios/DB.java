@@ -8,6 +8,7 @@ public class DB {  //esta clase simulara ser una "base de datos"
     ArrayList<Estudiante> estudiantes = new ArrayList<>();
     private static DB db = null;
 
+
     public static DB getInstancia(){
         if(db == null){
             db = new DB();
@@ -16,10 +17,10 @@ public class DB {  //esta clase simulara ser una "base de datos"
     }
 
     DB(){
-        estudiantes.add( new Estudiante(20132039, "Sarahaime", "Rodriguez", "809-917-6445"));
-        estudiantes.add( new Estudiante(20142039, "Sarahaimes", "Rodriguez", "809-917-6414"));
-        estudiantes.add( new Estudiante(20152039, "Sarahaime", "Torres", "809-917-6415"));
-        estudiantes.add( new Estudiante(20130191, "Edgar", "Gutierrez", "809-999-9999"));
+        estudiantes.add( new Estudiante("20132039", "Sarahaime", "Rodriguez", "809-917-6445"));
+        estudiantes.add( new Estudiante("20142039", "Sarahaimes", "Rodriguez", "809-917-6414"));
+        estudiantes.add( new Estudiante("20152039", "Sarahaime", "Torres", "809-917-6415"));
+        estudiantes.add( new Estudiante("20130191", "Edgar", "Gutierrez", "809-999-9999"));
     }
 
     public ArrayList<Estudiante> getEstudiantes() {
@@ -34,18 +35,22 @@ public class DB {  //esta clase simulara ser una "base de datos"
         estudiantes.add(estudiante);
     }
 
-    public void deleteEstudianteByMatricula(int matricula){
+    public void deleteEstudianteByMatricula(String matricula){
         for(Estudiante estudiante:estudiantes){
-            if(estudiante.getMatricula() == matricula) estudiantes.remove(estudiante);
+            if(estudiante.getMatricula().equalsIgnoreCase(matricula)) {
+                estudiantes.remove(estudiante);
+                return;
+            }
         }
     }
 
-    public Estudiante getEstudianteByMatricula(int matricula){
+    public Estudiante getEstudianteByMatricula(String matricula){
         for(Estudiante estudiante:estudiantes){
-            if(estudiante.getMatricula() == matricula) return estudiante;
+            if(estudiante.getMatricula().equalsIgnoreCase( matricula) )
+                return estudiante;
         }
 
-        return new Estudiante(); //esto nunca va a pasar
+        return new Estudiante();
     }
 
     public void updateEstudiante(Estudiante viejo, Estudiante actualizado){

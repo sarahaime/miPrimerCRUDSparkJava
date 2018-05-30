@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<title>WEB</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--============================Para los iconos ====================================================-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="contact1">
+		<div align="right" style="position: absolute; top: 70px; right: 25%;">
+			<a href="/listadoEstudiante" class="btn btn-success btn-lg" data-toggle="tooltip" title="Volver al Listado">
+				<span class="glyphicon glyphicon-circle-arrow-left"></span>
+			</a>
+		</div>
+		<div class="container-contact1">
+			<form class="contact1-form validate-form">
+				<span class="contact1-form-title" th:text="${accionFormulario}">
+					Agregar Estudiante
+				</span>
+				<div class="wrap-input1">
+					<input class="input1" type="text" name="matricula" placeholder="Matrícula" th:value="${estudiante.matricula}">
+					<span class="shadow-input1"></span>
+				</div>
+				<div class="wrap-input1 validate-input" data-validate = "Nombre es obligarotio">
+					<input class="input1" type="text" name="nombre" placeholder="Nombre"  th:value="${estudiante.nombre}">
+					<span class="shadow-input1"></span>
+				</div>
+				<div class="wrap-input1 validate-input" data-validate = "Apellido es obligarotio">
+					<input class="input1" type="text" name="apellido" placeholder="Apellido" th:value="${estudiante.apellido}">
+					<span class="shadow-input1"></span>
+				</div>
+				<div class="wrap-input1 validate-input" data-validate = "Formato requerido: 809-555-7777">
+					<input class="input1" type="text" name="telefono" placeholder="Teléfono" th:value="${estudiante.telefono}">
+					<span class="shadow-input1"></span>
+				</div>
+				<div class="container-contact1-form-btn">
+					<button class="contact1-form-btn">
+						<span>
+							Realizar
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<!--<script src="../publico/vendor/tilt/tilt.jquery.min.js"></script>-->
+	<!--<script >-->
+		<!--$('.js-tilt').tilt({-->
+			<!--scale: 1.1-->
+		<!--})-->
+	<!--</script>-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Listado</title>
+    <title>WEB</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -11,20 +11,31 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="js/main.js"></script>
+    <script src="js/listado.js"></script>
+    <!--============================Para los iconos ====================================================-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
 </head>
 <body>
 
 <div class="limiter">
+    <div align="center" style="position: absolute; top: 80px; right: 50%;">
+        <h1> Estudiantes registrados</h1>
+    </div>
+    <div align="right" style="position: absolute; top: 80px; right: 17%;">
+        <a href="/registrarEstudiante" data-toggle="tooltip" title="Registrar estudiante">
+            <i class="fa fa-plus-circle btn-info btn-lg"> Registrar </i>
+        </a>
+    </div>
+
     <div class="container-table100">
         <div class="wrap-table100">
             <div class="table">
@@ -41,6 +52,10 @@
                     <div class="cell">
                         Telefono
                     </div>
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                    </div>
                 </div>
                 <div class="row"  th:each="estudiante : ${listaEstudiante}">
                     <div class="cell" data-title="Matricula" th:text="${estudiante.matricula}">
@@ -55,13 +70,22 @@
                     <div class="cell" data-title="Telefono" th:text="${estudiante.telefono}">
                         809-573-1226
                     </div>
+                    <div class="cell" data-title="Editar">
+                        <a href="" th:href="|/editarEstudiante?matricula=${estudiante.matricula}|">
+                            <i  class="fa fa-pencil btn-lg" data-toggle="tooltip" title="Editar estudiante"></i>
+                        </a>
+                    </div>
+                    <div class="cell" data-title="Borrar">
+                        <a href="/listadoEstudiante"  th:href="|/borrarEstudiante?matricula=${estudiante.matricula}|">
+                        <i class="fa fa-minus-circle btn-lg" style="color:red;" data-toggle="tooltip" title="Borrar estudiante"></i>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
 
 
 <!--===============================================================================================-->
@@ -72,7 +96,7 @@
 <!--===============================================================================================-->
 <script src="vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-<script src="js/main.js"></script>
+<script src="js/listado.js"></script>
 
 </body>
 </html>

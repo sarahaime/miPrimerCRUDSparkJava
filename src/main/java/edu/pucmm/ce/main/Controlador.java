@@ -25,16 +25,46 @@ public class Controlador {
         /**
          * http://localhost:4567/index           listado de los estudiantes
          */
-        get("/listado", (request, response) -> {
+        get("/listadoEstudiante", (request, response) -> {
             List<Estudiante> listaEstudiante = DB.getInstancia().getEstudiantes();
             Map<String, Object> modelo = new HashMap<>();
             modelo.put("listaEstudiante", listaEstudiante);
-            modelo.put("titulo", "Enviado desde jetty");
+           // modelo.put("titulo", "Enviado desde jetty");
             return renderThymeleaf(modelo,"/listado");
-
         });
-    }
 
+
+        get("/registrarEstudiante", (request, response) ->{
+            Map<String, Object> modelo = new HashMap<>();
+            Estudiante estudiante = new Estudiante();
+            modelo.put("estudiante", estudiante);
+            modelo.put("accionFormulario", "Registrar estudiante");
+            return renderThymeleaf(modelo,"/formulario");
+        });
+
+        get("/editarEstudiante", (request, response) ->{
+
+            Estudiante estudiante = DB.getInstancia().getEstudianteByMatricula(request.queryParams("matricula") );
+
+            if(estudiante.getMatricula().equalsIgnoreCase(""))
+                response.redirect("/listadoEstudiante");
+
+            Map<String, Object> modelo = new HashMap<>();
+            modelo.put("estudiante", estudiante);
+            modelo.put("accionFormulario", "Editar a estudiante: " + estudiante.getNombre());
+            return renderThymeleaf(modelo,"/formulario");
+        });
+
+        get("/borrarEstudiante", (request, response) ->{
+            DB.getInstancia().deleteEstudianteByMatricula(request.queryParams("matricula") );
+            response.redirect("/listadoEstudiante");
+            return response;
+        });
+
+
+
+
+    }
 
 
 }
