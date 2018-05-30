@@ -53,9 +53,18 @@ public class DB {  //esta clase simulara ser una "base de datos"
         return new Estudiante();
     }
 
-    public void updateEstudiante(Estudiante viejo, Estudiante actualizado){
-        estudiantes.remove(viejo);
-        estudiantes.add(actualizado);
+    public void updateEstudianteByID(int id, String matricula, String nombre, String apellido, String telefono){
+
+        for(Estudiante estudiante:estudiantes){
+            if(estudiante.getId() == id ) {
+                estudiante.setMatricula(matricula);
+                estudiante.setApellido(apellido);
+                estudiante.setNombre(nombre);
+                estudiante.setTelefono(telefono);
+                return;
+            }
+        }
+
     }
 
 }

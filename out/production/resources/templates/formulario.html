@@ -34,7 +34,7 @@
 			</a>
 		</div>
 		<div class="container-contact1">
-			<form class="contact1-form validate-form">
+			<form class="contact1-form validate-form" method="post">
 				<span class="contact1-form-title" th:text="${accionFormulario}">
 					Agregar Estudiante
 				</span>
@@ -54,6 +54,7 @@
 					<input class="input1" type="text" name="telefono" placeholder="Teléfono" th:value="${estudiante.telefono}">
 					<span class="shadow-input1"></span>
 				</div>
+				<input type="hidden" name="id" th:value="${estudiante.id}">
 				<div class="container-contact1-form-btn">
 					<button class="contact1-form-btn">
 						<span>

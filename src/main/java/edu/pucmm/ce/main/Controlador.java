@@ -4,11 +4,14 @@ package edu.pucmm.ce.main;
 import edu.pucmm.ce.encapsulacion.Estudiante;
 import edu.pucmm.ce.servicios.DB;
 import spark.ModelAndView;
+import spark.Request;
+import spark.Response;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static spark.Spark.*;
 
@@ -39,6 +42,7 @@ public class Controlador {
             Estudiante estudiante = new Estudiante();
             modelo.put("estudiante", estudiante);
             modelo.put("accionFormulario", "Registrar estudiante");
+
             return renderThymeleaf(modelo,"/formulario");
         });
 
@@ -53,6 +57,7 @@ public class Controlador {
             modelo.put("estudiante", estudiante);
             modelo.put("accionFormulario", "Editar a estudiante: " + estudiante.getNombre());
             return renderThymeleaf(modelo,"/formulario");
+
         });
 
         get("/borrarEstudiante", (request, response) ->{
@@ -62,9 +67,40 @@ public class Controlador {
         });
 
 
+        post("/registrarEstudiante", (request, response) ->{
+            Estudiante estudiante = new Estudiante(request.queryParams("matricula"), request.queryParams("nombre"), request.queryParams("apellido"), request.queryParams("telefono"));
+            DB.getInstancia().addEstudiante(estudiante);
+            response.redirect("/listadoEstudiante");
+            return "Estudiante registrado";
+        });
+
+
+        post("/editarEstudiante", (request, response) ->{
+            DB.getInstancia().updateEstudianteByID( Integer.parseInt( request.queryParams("id")),
+                    request.queryParams("matricula"), request.queryParams("nombre"),
+                    request.queryParams("apellido"), request.queryParams("telefono"));
+
+            response.redirect("/listadoEstudiante");
+            return "Estudiante editado";
+        });
+
+
 
 
     }
+
+    private static Object procesarParametros(Request request, Response response){
+        System.out.println("Recibiendo mensaje por el metodo: "+request.requestMethod());
+        Set<String> parametros = request.queryParams();
+        String salida="";
+
+        for(String param : parametros){
+            salida += String.format("Parametro[%s] = %s <br/>", param, request.queryParams(param));
+        }
+
+        return salida;
+    }
+
 
 
 }
