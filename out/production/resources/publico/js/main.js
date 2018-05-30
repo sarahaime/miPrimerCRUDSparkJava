@@ -11,6 +11,7 @@
     var telefono = $('.validate-input textarea[name="telefono"]');
 
 
+
     $('.validate-form').on('submit',function(){
         var check = true;
 
@@ -35,26 +36,28 @@
             check=false;
         }
 
+        console.log(check);
         return check;
     });
 
 
     $('.validate-form .input1').each(function(){
         $(this).focus(function(){
-           hideValidate(this);
-       });
+            hideValidate(this);
+        });
     });
 
     function showValidate(input) {
         var thisAlert = $(input).parent();
+
         $(thisAlert).addClass('alert-validate');
     }
 
     function hideValidate(input) {
         var thisAlert = $(input).parent();
+
         $(thisAlert).removeClass('alert-validate');
     }
-    
-    
+
 
 })(jQuery);

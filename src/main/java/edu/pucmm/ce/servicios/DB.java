@@ -44,6 +44,16 @@ public class DB {  //esta clase simulara ser una "base de datos"
         }
     }
 
+
+    public Estudiante getEstudianteByID(int id){
+        for(Estudiante estudiante:estudiantes){
+            if(estudiante.getId() == id )
+                return estudiante;
+        }
+
+        return new Estudiante();
+    }
+
     public Estudiante getEstudianteByMatricula(String matricula){
         for(Estudiante estudiante:estudiantes){
             if(estudiante.getMatricula().equalsIgnoreCase( matricula) )

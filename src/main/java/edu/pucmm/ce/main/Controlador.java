@@ -6,6 +6,7 @@ import edu.pucmm.ce.servicios.DB;
 import spark.ModelAndView;
 import spark.Request;
 import spark.Response;
+import spark.Spark;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
 import java.util.HashMap;
@@ -48,15 +49,20 @@ public class Controlador {
 
         get("/editarEstudiante", (request, response) ->{
 
-            Estudiante estudiante = DB.getInstancia().getEstudianteByMatricula(request.queryParams("matricula") );
+            try {
+                Estudiante estudiante = DB.getInstancia().getEstudianteByID(Integer.parseInt(request.queryParams("id")));
 
-            if(estudiante.getMatricula().equalsIgnoreCase(""))
-                response.redirect("/listadoEstudiante");
+                if (estudiante.getMatricula().equalsIgnoreCase(""))
+                    response.redirect("/listadoEstudiante");
 
-            Map<String, Object> modelo = new HashMap<>();
-            modelo.put("estudiante", estudiante);
-            modelo.put("accionFormulario", "Editar a estudiante: " + estudiante.getNombre());
-            return renderThymeleaf(modelo,"/formulario");
+                Map<String, Object> modelo = new HashMap<>();
+                modelo.put("estudiante", estudiante);
+                modelo.put("accionFormulario", "Editar a estudiante: " + estudiante.getNombre());
+                return renderThymeleaf(modelo, "/formulario");
+            }catch (Exception e){
+                response.redirect("/registrarEstudiante");
+                return "ID no existe como parametro";
+            }
 
         });
 
@@ -76,7 +82,7 @@ public class Controlador {
 
 
         post("/editarEstudiante", (request, response) ->{
-            DB.getInstancia().updateEstudianteByID( Integer.parseInt( request.queryParams("id")),
+            DB.getInstancia().updateEstudianteByID( Integer.parseInt( request.queryParams("id") ),
                     request.queryParams("matricula"), request.queryParams("nombre"),
                     request.queryParams("apellido"), request.queryParams("telefono"));
 
