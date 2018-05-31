@@ -90,6 +90,15 @@ public class Controlador {
             return "Estudiante editado";
         });
 
+        get("/", (request, response) ->{
+            response.redirect("/listadoEstudiante");
+            return "numero malo";
+        });
+        get("", (request, response) ->{
+            response.redirect("/listadoEstudiante");
+            return "numero malo";
+        });
+
 
 
 

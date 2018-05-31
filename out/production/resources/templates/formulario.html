@@ -23,7 +23,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
+	<!--&lt;!&ndash; Input Mask &ndash;&gt;-->
+	<script src="js/jasny-bootstrap.js"></script>
+	<!--&lt;!&ndash; Latest compiled and minified CSS &ndash;&gt;-->
+	<!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">-->
+
+	<!--&lt;!&ndash; Latest compiled and minified JavaScript &ndash;&gt;-->
+	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>-->
+
 </head>
 <body>
 
@@ -39,19 +46,19 @@
 					Agregar Estudiante
 				</span>
 				<div class="wrap-input1">
-					<input class="input1" type="text" name="matricula" placeholder="Matrícula" th:value="${estudiante.matricula}">
+					<input type="text" class="input1" name="matricula" id="matricula" data-mask="9999-9999" placeholder="Matrícula" th:value="${estudiante.matricula}" required>
 					<span class="shadow-input1"></span>
 				</div>
 				<div class="wrap-input1 validate-input" data-validate = "Nombre es obligarotio">
-					<input class="input1" type="text" name="nombre" placeholder="Nombre"  th:value="${estudiante.nombre}">
+					<input class="input1" type="digit" name="nombre" id="nombre" placeholder="Nombre"  th:value="${estudiante.nombre}" required>
 					<span class="shadow-input1"></span>
 				</div>
 				<div class="wrap-input1 validate-input" data-validate = "Apellido es obligarotio">
-					<input class="input1" type="text" name="apellido" placeholder="Apellido" th:value="${estudiante.apellido}">
+					<input class="input1" type="digit" name="apellido" id="apellido" placeholder="Apellido" th:value="${estudiante.apellido}" required>
 					<span class="shadow-input1"></span>
 				</div>
 				<div class="wrap-input1 validate-input" data-validate = "Formato requerido: 809-555-7777">
-					<input class="input1" type="text" name="telefono" placeholder="Teléfono" th:value="${estudiante.telefono}">
+					<input class="input1" type="text" name="telefono" id="telefono" data-mask="(999) 999-9999" placeholder="Teléfono" th:value="${estudiante.telefono}" required>
 					<span class="shadow-input1"></span>
 				</div>
 				<input type="hidden" name="id" th:value="${estudiante.id}">
@@ -84,8 +91,6 @@
 		})
 	</script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -93,7 +98,7 @@
 
   gtag('config', 'UA-23581568-13');
 </script>
-<script src="js/main.js"></script>
+<script src="js/registro.js"></script>
 
 </body>
 </html>

@@ -17,26 +17,32 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="js/listado.js"></script>
     <!--============================Para los iconos ====================================================-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--===============================================================================================-->
 </head>
-<body>
+<body style="  background: #009bff;
+  background: -webkit-linear-gradient(left, #0072ff, #8c4fff);
+  background: -o-linear-gradient(left, #0072ff, #00c6ff);
+  background: -moz-linear-gradient(left, #0072ff, #00c6ff);
+  background: linear-gradient(left, #0072ff, #00c6ff);">
+
 
 <div class="limiter">
-    <div align="center" style="position: absolute; top: 80px; right: 50%;">
-        <h1> Estudiantes registrados</h1>
-    </div>
-    <div align="right" style="position: absolute; top: 80px; right: 17%;">
+    <div align="right" style="position: absolute; top: 65px; right: 17%;">
         <a href="/registrarEstudiante" data-toggle="tooltip" title="Registrar estudiante">
             <i class="fa fa-plus-circle btn-info btn-lg"> Registrar </i>
         </a>
     </div>
-
+    <div align="center">
+        <br> <br>
+        <h1> Estudiantes registrados</h1>
+        <br>
+    </div>
     <div class="container-table100">
+
         <div class="wrap-table100">
             <div class="table">
                 <div class="row header">
@@ -71,7 +77,7 @@
                         809-573-1226
                     </div>
                     <div class="cell" data-title="Editar">
-                        <a href="" th:href="|/editarEstudiante?id=${estudiante.id}|">
+                        <a href="/listadoEstudiante" th:href="|/editarEstudiante?id=${estudiante.id}|">
                             <i  class="fa fa-pencil btn-lg" data-toggle="tooltip" title="Editar estudiante"></i>
                         </a>
                     </div>
@@ -95,8 +101,5 @@
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 <script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="js/listado.js"></script>
-
 </body>
 </html>

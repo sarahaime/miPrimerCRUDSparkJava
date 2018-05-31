@@ -133,11 +133,16 @@ iframe {
 .limiter {
   width: 100%;
   margin: 0 auto;
+  background: #009bff;
+  background: -webkit-linear-gradient(left, #0072ff, #8c4fff);
+  background: -o-linear-gradient(left, #0072ff, #00c6ff);
+  background: -moz-linear-gradient(left, #0072ff, #00c6ff);
+  background: linear-gradient(left, #0072ff, #00c6ff);
 }
 
 .container-table100 {
   width: 100%;
-  min-height: 100vh;
+  min-height: 10vh;
 
   background: #009bff;
   background: -webkit-linear-gradient(left, #0072ff, #8c4fff);
@@ -153,19 +158,20 @@ iframe {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 33px 30px;
 }
 
 .wrap-table100 {
   width: 960px;
   border-radius: 10px;
   overflow: hidden;
+
 }
 
 .table {
   width: 100%;
   display: table;
   margin: 0;
+  border-radius: 10px;
 }
 
 @media screen and (max-width: 768px) {
